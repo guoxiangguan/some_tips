@@ -1,0 +1,7 @@
+#!/usr/bin/python3
+#-*-coding:utf-8-*-
+
+with open(file_name_source,'rb') as f_source:
+    with open(file_name_target,'wb') as f_target:
+        f_target.write(f_source.read())
+        
