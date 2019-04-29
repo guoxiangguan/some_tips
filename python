@@ -22,3 +22,15 @@ entries,which means that when the dictionary changes,the view reflects these cha
 with concurrent.futures.ThreadPoolExecuter(max_workers=nums) as executer:
     executer.map(func, *args) # 有顺序的平均分配任务
     [executer.submit(func, args) for args in args_list] # 一个线程的任务处理完立刻取下一个任务,是无序的,不平均的,一般而言这样是比较合理的
+    
+    
+# 日志的配置
+import logging
+logger = logging.getLogger('module_name')
+logger.setLevel(logging.DEBUG)
+fh = logging.FileHandler('moudle_name.log')
+fh.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname) - %(message)s')
+fh.setFormatter(formatter)
+logger.addHandler(fh)
+logger.debug/info/warning/error/exception('messages,%s', value)
