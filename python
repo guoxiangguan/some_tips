@@ -17,10 +17,10 @@ entries,which means that when the dictionary changes,the view reflects these cha
 函数中有global关键字，变量本质就是全局变量，可读取全局变量，也可操作全局变量
 
 
-# 多线程 concurrent.future.ThreadPoolExecuter
+# 多线程 concurrent.futures.ThreadPoolExecuter
 
 with concurrent.futures.ThreadPoolExecuter(max_workers=nums) as executer:
-    executer.map(func, *args) # 有顺序的平均分配任务
+    executer.map(func, list_of_args) # 有顺序的平均分配任务
     [executer.submit(func, args) for args in args_list] # 一个线程的任务处理完立刻取下一个任务,是无序的,不平均的,一般而言这样是比较合理的
     
     
