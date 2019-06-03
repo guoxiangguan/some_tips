@@ -34,3 +34,7 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname) - %(message
 fh.setFormatter(formatter)
 logger.addHandler(fh)
 logger.debug/info/warning/error/exception('messages,%s', value)
+
+# 生成器
+用yield关键字或者括号包含表达式, 用next()获取其中的值, 或者用for循环来获取其中的值.
+可以借用itertools.islice()方法来获取生成器切片.
