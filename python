@@ -1,40 +1,50 @@
 # python3.7
 
-# dictionary view objects
-The objects returned by dict.keys(),dict.values(),and dict.items() are view objects.They provide a dynamic view on the dictionary's
-entries,which means that when the dictionary changes,the view reflects these changes.
+1 dictionary view objects
+    The objects returned by dict.keys(),dict.values(),and dict.items() are view objects.They provide a dynamic view on the dictionary's
+    entries,which means that when the dictionary changes,the view reflects these changes.
 
 
-# 全局变量和局部变量
+2 全局变量和局部变量
 
-一般写程序变量的命名规则
+    一般写程序变量的命名规则
 
-###全局变量变量名大写
-###局部变量变量名小写
+    ###全局变量变量名大写
+    ###局部变量变量名小写
 
-函数优先读取局部变量，能读全局变量，无法对全局变量重新赋值操作，#全局变量是不可变的类型
-全局变量是可变类型，函数可以对全局变量进行操作
-函数中有global关键字，变量本质就是全局变量，可读取全局变量，也可操作全局变量
+        函数优先读取局部变量，能读全局变量，无法对全局变量重新赋值操作，#全局变量是不可变的类型
+        全局变量是可变类型，函数可以对全局变量进行操作
+        函数中有global关键字，变量本质就是全局变量，可读取全局变量，也可操作全局变量
 
 
-# 多线程 concurrent.futures.ThreadPoolExecuter
+3 多线程 concurrent.futures.ThreadPoolExecuter
 
-with concurrent.futures.ThreadPoolExecuter(max_workers=nums) as executer:
-    executer.map(func, list_of_args) # 有顺序的平均分配任务
-    [executer.submit(func, args) for args in args_list] # 一个线程的任务处理完立刻取下一个任务,是无序的,不平均的,一般而言这样是比较合理的
+    with concurrent.futures.ThreadPoolExecuter(max_workers=nums) as executer:
+        executer.map(func, list_of_args) # 有顺序的平均分配任务
+        [executer.submit(func, args) for args in args_list] # 一个线程的任务处理完立刻取下一个任务,是无序的,不平均的,一般而言这样是比较合理的
     
     
-# 日志的配置
-import logging
-logger = logging.getLogger('module_name')
-logger.setLevel(logging.DEBUG)
-fh = logging.FileHandler('moudle_name.log')
-fh.setLevel(logging.DEBUG)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname) - %(message)s')
-fh.setFormatter(formatter)
-logger.addHandler(fh)
-logger.debug/info/warning/error/exception('messages,%s', value)
+4 日志的配置
+    import logging
+    logger = logging.getLogger('module_name')
+    logger.setLevel(logging.DEBUG)
+    fh = logging.FileHandler('moudle_name.log')
+    fh.setLevel(logging.DEBUG)
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname) - %(message)s')
+    fh.setFormatter(formatter)
+    logger.addHandler(fh)
+    logger.debug/info/warning/error/exception('messages,%s', value)
 
-# 生成器
-用yield关键字或者括号包含表达式, 用next()获取其中的值, 或者用for循环来获取其中的值.
-可以借用itertools.islice()方法来获取生成器切片.
+5 生成器
+    用yield关键字或者括号包含表达式, 用next()获取其中的值, 或者用for循环来获取其中的值.
+    可以借用itertools.islice()方法来获取生成器切片.
+
+6 python 使用 pymysql DBUtils 创建连接池, 提升性能
+    '''
+    import pymysql
+    from DBUtils.PooledDB import PooledDB
+    pool = PooledDB(pymysql, 5, host='ip', user='user', passwd='passwd', db='db', port=3306, setsession=['SET AUTOCOMMIT = 1']) # 5为连接池最小连接数, setsession=['SET AUTOCOMMIT = 1']是用来设置线程池是否打开自动更新的配置，0为False，1为True
+    conn = pool.connection()
+    '''
+    1 在程序创建连接的时候, 可以从一个空闲的连接中获取, 不需要重新初始化连接, 提升获取连接的速度
+    2 关闭连接的时候, 把连接放回连接池, 而不是真正的关闭, 所以可以减少频繁地打开和关闭连接
