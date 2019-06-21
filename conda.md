@@ -1,4 +1,5 @@
-环境
+# conda notebook
+## 环境
     创建一个新环境，其中包含指定版本的python
         conda create --name new_env python=3.7
         
@@ -14,7 +15,7 @@
     停用当前环境返回基础环境
         conda activate
 
-管理包
+## 管理包
     检查Anaconda储存库(需要连接到internet)是否提供了某安装包
         conda search moudle
 

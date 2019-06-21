@@ -122,3 +122,30 @@ conn = pool.connection()
 
 ## 装饰器
 * 装饰器的本质是一个函数, 可以让其他函数在不改动源代码的情况下增加其他新功能, 比如网站经常需要权限校验等场景
+
+## redis
+### 基本操作
+* redis-py库提供两个类Redis和StrictRedis来实现redis的命令操作
+* 推荐使用 StrictRedis
+```python
+from redis import StrictRedis
+redis = StrictRedis(host='localhost', port=6379, db=0, password='sth')
+redis.set('name', 'bob')
+print(redis.get('name'))
+```
+* 连接池 ConnectionPool
+```python
+from redis import StrictRedis, ConnectionPool
+pool = ConnectionPool(host='localhost', port=6379, db=0, password='sth')
+redis = StrictRedis(connection_pool=pool)
+```
+* 键操作
+
+| 方法 | 作用 | 参数说明 | 示例 | 示例说明 | 示例结果 |
+| :--:   |:---:   | :---:    |:---:    |:---:      |:--:    |
+| exists(name) | 判断一个键是否存在 | name: 键名 | `redis.exists('name')` | 是否存在 name 这个键 | True/False |
+| delete(name) | 删除一个键 | name: 键名 | `redis.delete('name')` | 删除 name 这个键 | 1 |
+| randomkey() | 获取随机一个键 |
+| rename(src, dst) | 重命名键 |
+| set(name, value) | 给数据库中键为 name 的键赋值 value |
+| get(name) | 返回数据库中键为 name 的 value |
