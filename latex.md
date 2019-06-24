@@ -215,3 +215,11 @@
     5 $$ e^{ix} = \cos(x) + i\sin(x).$$
     6 \end{document}
     ```
+
+## 数学公式
+* 分式: \frac{}{}
+* 大写的希腊字母lambda: \varLambda
+* 字母上加一个波浪: \tilde{}
+* 根式: \sqrt[n]{...}
+    * 例: $\sqrt[n]{a+b}$
+
