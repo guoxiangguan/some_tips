@@ -143,9 +143,15 @@ redis = StrictRedis(connection_pool=pool)
 
 | 方法 | 作用 | 参数说明 | 示例 | 示例说明 | 示例结果 |
 | :--:   |:---:   | :---:    |:---:    |:---:      |:--:    |
-| exists(name) | 判断一个键是否存在 | name: 键名 | `redis.exists('name')` | 是否存在 name 这个键 | True/False |
-| delete(name) | 删除一个键 | name: 键名 | `redis.delete('name')` | 删除 name 这个键 | 1 |
-| randomkey() | 获取随机一个键 |
-| rename(src, dst) | 重命名键 |
-| set(name, value) | 给数据库中键为 name 的键赋值 value |
-| get(name) | 返回数据库中键为 name 的 value |
+| `exists(name)` | 判断一个键是否存在 | name: 键名 | `redis.exists('name')` | 是否存在 name 这个键 | True/False |
+| `delete(name)` | 删除一个键 | name: 键名 | `redis.delete('name')` | 删除 name 这个键 | 1 |
+| `randomkey()` | 获取随机一个键 |
+| `rename(src, dst)` | 重命名键 |
+| `set(name, value)` | 给数据库中键为 name 的键赋值 value |
+| `get(name)` | 返回数据库中键为 name 的 value |
+
+* 列表常用键操作
+    * `db.lpush(key, value)` 列表向左推入一个元素, redis的列表更像是一个队列
+    * `db.blpop(key, [timeout])` 从列表中弹出第一个元素, 如果没有就会堵塞, 可以设置一个堵塞时间
+    * `db.llen(key)` 返回列表的长度
+    * **注**: 可以用redis控制并行的线程个数, 在某些场景下很好用, 比如有很多多线程的函数一起运行, 这时候可以使用redis队列控制这些多线程函数总的并行数不超过某个阈值, 具体可见test_ssh_loadhtml.py文件控制多线程爬虫不过度占用服务器的资源的实例.
