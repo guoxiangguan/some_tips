@@ -222,4 +222,8 @@
 * 字母上加一个波浪: \tilde{}
 * 根式: \sqrt[n]{...}
     * 例: $\sqrt[n]{a+b}$
+- $\le$: \le \leq
+- $\ge$: \ge \geq
+- $\lfloor$: \lfloor
+- $\rfloor$: \rfloor
 

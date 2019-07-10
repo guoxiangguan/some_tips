@@ -155,3 +155,6 @@ redis = StrictRedis(connection_pool=pool)
     * `db.blpop(key, [timeout])` 从列表中弹出第一个元素, 如果没有就会堵塞, 可以设置一个堵塞时间
     * `db.llen(key)` 返回列表的长度
     * **注**: 可以用redis控制并行的线程个数, 在某些场景下很好用, 比如有很多多线程的函数一起运行, 这时候可以使用redis队列控制这些多线程函数总的并行数不超过某个阈值, 具体可见test_ssh_loadhtml.py文件控制多线程爬虫不过度占用服务器的资源的实例.
+
+## list
+- list.extend(index, object): insert object before index
