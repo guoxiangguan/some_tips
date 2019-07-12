@@ -4,10 +4,10 @@
         conda create --name new_env python=3.7
 
     查看所有环境的列表
-        conda info --envs:
+        conda info --envs
 
     激活新环境
-        conda activate new_env:
+        conda activate new_env
 
     查看当前环境中python版本
         python --version
