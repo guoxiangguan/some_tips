@@ -14,24 +14,27 @@
 
 ## 多线程 concurrent.futures.ThreadPoolExecuter
 
-```python
-with concurrent.futures.ThreadPoolExecuter(max_workers=nums) as executer:
-    executer.map(func, list_of_args) # 有顺序的平均分配任务
-    [executer.submit(func, args) for args in args_list] # 一个线程的任务处理完立刻取下一个任务,是无序的,不平均的,一般而言这样是比较合理的
-```
+    ```python
+    with concurrent.futures.ThreadPoolExecuter(max_workers=nums) as executer:
+        executer.map(func, list_of_args) # 有顺序的平均分配任务
+        [executer.submit(func, args) for args in args_list] # 一个线程的任务处理完立刻取下一个任务,是无序的,不平均的,一般而言这样是比较合理的
+    ```
 
 ## 日志的配置
-```python
-import logging
-logger = logging.getLogger('module_name')
-logger.setLevel(logging.DEBUG)
-fh = logging.FileHandler('moudle_name.log')
-fh.setLevel(logging.DEBUG)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname) - %(message)s')
-fh.setFormatter(formatter)
-logger.addHandler(fh)
-logger.debug/info/warning/error/exception('messages,%s', value)
-```
+    ```python
+    # 日志配置
+    logger = logging.getLogger('moudle_name')
+    logger.setLevel(logging.INFO)
+    fh = logging.FileHandler('moudel_name.log')
+    fh.setLevel(logging.DEBUG)
+    sh = logging.StreamHandler()
+    sh.setLevel(logging.DEBUG)
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    fh.setFormatter(formatter)
+    sh.setFormatter(formatter)
+    logger.addHandler(fh)
+    logger.addHandler(sh)
+    ```
 
 ## 生成器
 * 用yield关键字或者括号包含表达式, 用next()获取其中的值, 或者用for循环来获取其中的值.
@@ -98,14 +101,14 @@ conn = pool.connection()
     val = config.has_option('section1', 'age')  # 检查指定节点中是否存在某个key，返回True或False
     print(val)
     #True
-    
+
     # 增删改
     config.add_section("node")  # 添加一个节点，节点名为node, 此时添加的节点node尚未写入文件
     config.write(open('user.ini', "w"))  # 将添加的节点node写入配置文件
-    
+
     config.remove_section("node")  # 删除一个节点，节点名为node, 删掉了内存中的节点node
     config.write(open("user.ini", "w"))  # 将删除节点node后的文件内容回写到配置文件
-    
+
     config.set("section1", "k1", "v1")  # 在已存在的节点中添加一个键值对k1 = v1 ,如果该节点不存在则报错,如果key已经存在，则修改value
     # configparser.NoSectionError: No section: 'section'
     config.write(open("user.ini", "w"))
@@ -127,18 +130,18 @@ conn = pool.connection()
 ### 基本操作
 * redis-py库提供两个类Redis和StrictRedis来实现redis的命令操作
 * 推荐使用 StrictRedis
-```python
-from redis import StrictRedis
-redis = StrictRedis(host='localhost', port=6379, db=0, password='sth')
-redis.set('name', 'bob')
-print(redis.get('name'))
-```
+    ```python
+    from redis import StrictRedis
+    redis = StrictRedis(host='localhost', port=6379, db=0, password='sth')
+    redis.set('name', 'bob')
+    print(redis.get('name'))
+    ```
 * 连接池 ConnectionPool
-```python
-from redis import StrictRedis, ConnectionPool
-pool = ConnectionPool(host='localhost', port=6379, db=0, password='sth')
-redis = StrictRedis(connection_pool=pool)
-```
+    ```python
+    from redis import StrictRedis, ConnectionPool
+    pool = ConnectionPool(host='localhost', port=6379, db=0, password='sth')
+    redis = StrictRedis(connection_pool=pool)
+    ```
 * 键操作
 
 | 方法 | 作用 | 参数说明 | 示例 | 示例说明 | 示例结果 |
@@ -155,3 +158,34 @@ redis = StrictRedis(connection_pool=pool)
     * `db.blpop(key, [timeout])` 从列表中弹出第一个元素, 如果没有就会堵塞, 可以设置一个堵塞时间
     * `db.llen(key)` 返回列表的长度
     * **注**: 可以用redis控制并行的线程个数, 在某些场景下很好用, 比如有很多多线程的函数一起运行, 这时候可以使用redis队列控制这些多线程函数总的并行数不超过某个阈值, 具体可见test_ssh_loadhtml.py文件控制多线程爬虫不过度占用服务器的资源的实例.
+
+## 字符串 str
+### str.replace(a, b, count=-1)
+* 将 str 中的 a 全部替换为 b, 返回一个新的对象, 不会在 str 上进行修改.
+
+## 日期时间 datetime
+* 获取当前时间: `datetime.datetime.now()`
+* 获取指定时间和日期: `datetime.datetime(2015, 4, 19, 12, 20)`
+* 把一个 datetime.datetime 类型转换为 timestamp 只需要简单调用 timestamp() 方法
+* 将 timestamp 转换为 datetime.datetime 类型, 使用 datetime.datetime 提供的 fromtimestamp() 方法, 默认是本地时间, 转换到 UTC 标准时间使用 utcfromtimestamp() 方法
+* str 转换为 datetime.datetime 类型: `datetime.strptime('2015-6-1 18:19:59', '%Y-%m-%d %H:%M:%S')`
+* datetime.datetime 转换为 str:
+    ```python
+    >>> from datetime import datetime
+    >>> now = datetime.now()
+    >>> print(now.strftime('%a, %b %d %H:%M'))
+    Mon, May 05 16:28
+    ```
+* datetime加减:
+    ```python
+    >>> from datetime import datetime, timedelta
+    >>> now = datetime.now()
+    >>> now
+    datetime.datetime(2015, 5, 18, 16, 57, 3, 540997)
+    >>> now + timedelta(hours=10)
+    datetime.datetime(2015, 5, 19, 2, 57, 3, 540997)
+    >>> now - timedelta(days=1)
+    datetime.datetime(2015, 5, 17, 16, 57, 3, 540997)
+    >>> now + timedelta(days=2, hours=12)
+    datetime.datetime(2015, 5, 21, 4, 57, 3, 540997)
+    ```

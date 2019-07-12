@@ -33,6 +33,9 @@
     * mkdir -p: no error if existing, make parent directories as needed
 11. 修改文件权限
     * chown: Change the owner and/or group of each FILE to OWNER and/or GROUP
+        * chown root /u: change the owner of /u to "root"
+        * chown root:staff /u: likewise, but also change its group to "staff"
+        * chown -hR root /u: change the owner of /u and subfiles to "root"
 12. 设置环境变量
     * export: 用于设置或者显示环境变量
 ## connect vpn

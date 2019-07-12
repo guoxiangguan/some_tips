@@ -2,7 +2,7 @@
 ## 环境
     创建一个新环境，其中包含指定版本的python
         conda create --name new_env python=3.7
-        
+
     查看所有环境的列表
         conda info --envs:
 

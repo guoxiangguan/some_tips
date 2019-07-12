@@ -2,10 +2,10 @@
 
 ## 修改
 * 连接下一行: J
-* 大范围替换:  
-    `:[range]substitute/from/to/[flags]`        
-    * 例子:  
-        * `:%s/a/b/`:   
+* 大范围替换:
+    `:[range]substitute/from/to/[flags]`
+    * 例子:
+        * `:%s/a/b/`:
             * % 表示作用于全部行
             * :s 命令只作用在当前行
         * `:%s/a/b/g`:
@@ -23,4 +23,11 @@
         * `:.,$/yes/no/`
             * 表示修改当前行到文件末的全部内容
 
-    
+## 配置
+* set ruler: 在右下角显示当前光标的位置
+* set showcmd: 在右下角显示未完成的命令
+* set showmode: 在左下角显示编辑模式
+* set incsearch: 在输入部分查找模式时显示相应的匹配点
+* map Q gq: 定义一个键映射
+* filetype plugin indent on: 1. 文件类型探测 2. 使用文件类型相关的插件 3. 使用缩进文件
+* autocmd FileType text setlocal textwidth=78: 当文件类型被设置为 text 的时候, 后面的命令自动执行, 在一行长于 78 个字符的时候自动换行
