@@ -40,3 +40,6 @@
     * export: 用于设置或者显示环境变量
 ## connect vpn
 * openconnect vpn-ct.ecnu.edu.cn
+
+## linux 和 windows 文件交互
+* rz: windows 到 linux, sz: linux 到windows
