@@ -26,7 +26,7 @@
         * lsof: 显示该进程打开文件
         * wc: 计算文件数
 8. 关闭系统进程
-    * kill -9 'python3': 关闭所有包含进程名python3的进程
+    * killall -9 'python3': 关闭所有包含进程名python3的进程
 9. selenium
     * 双核 1 g: 最佳是跑5个selenium
 10. 创建文件夹
