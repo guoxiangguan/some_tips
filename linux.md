@@ -37,7 +37,11 @@
         * chown root:staff /u: likewise, but also change its group to "staff"
         * chown -hR root /u: change the owner of /u and subfiles to "root"
 12. 设置环境变量
-    * export: 用于设置或者显示环境变量
+    * export: 用于设置或者显示环境变量, 一般是临时的
+    * export -p: 列出当前环境变量
+    * 修改 ~/.bashrc: 永久性的, 配置当前用户下的环境变量
+    * 修改 /etc/profile: 永久性的配置所有用户的环境变量
+    * source: source filename: 在当前 bash 环境下读取并执行 filename 中的命令
 ## connect vpn
 * openconnect vpn-ct.ecnu.edu.cn
 
