@@ -197,8 +197,5 @@ conn = pool.connection()
     >>> now + timedelta(days=2, hours=12)
     datetime.datetime(2015, 5, 21, 4, 57, 3, 540997)
     ```
-<<<<<<< HEAD
-=======
 ## list
 - list.extend(index, object): insert object before index
->>>>>>> 53c81f957adad9143315066d45a0a1794724b2cc
