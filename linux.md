@@ -33,8 +33,12 @@
         * wc: 计算文件数
 
 8. 关闭系统进程
+<<<<<<< HEAD
     * kill -9 'python3': 关闭所有包含进程名python3的进程
 
+=======
+    * killall -9 'python3': 关闭所有包含进程名python3的进程
+>>>>>>> 53c81f957adad9143315066d45a0a1794724b2cc
 9. selenium
     * 双核 1 g: 最佳是跑5个selenium
 
@@ -48,6 +52,7 @@
         * chown -hR root /u: change the owner of /u and subfiles to "root"
 
 12. 设置环境变量
+<<<<<<< HEAD
     * export: 用于 **临时** 设置或者显示环境变量
         * export LANG=en_US.UTF-8: 保证输出不会在 linux 终端上显示乱码
         * export -p: 列出当前环境变量
@@ -56,5 +61,15 @@
     * 修改 ~/.bashrc 文件永久设置环境变量, 仅对单独用户有效
     * 在 su 模式下, 可以用 source 命令, source /etc/profile 使得设置立即生效, 否则正常重启后生效
 
+=======
+    * export: 用于设置或者显示环境变量, 一般是临时的
+    * export -p: 列出当前环境变量
+    * 修改 ~/.bashrc: 永久性的, 配置当前用户下的环境变量
+    * 修改 /etc/profile: 永久性的配置所有用户的环境变量
+    * source: source filename: 在当前 bash 环境下读取并执行 filename 中的命令
+>>>>>>> 53c81f957adad9143315066d45a0a1794724b2cc
 ## connect vpn
 * openconnect vpn-ct.ecnu.edu.cn
+
+## linux 和 windows 文件交互
+* rz: windows 到 linux, sz: linux 到windows
