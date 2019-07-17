@@ -31,11 +31,13 @@
     * 双核 1 g: 最佳是跑5个selenium
 10. 创建文件夹
     * mkdir -p: no error if existing, make parent directories as needed
-11. 修改文件权限
+11. 修改文件拥有者
     * chown: Change the owner and/or group of each FILE to OWNER and/or GROUP
         * chown root /u: change the owner of /u to "root"
         * chown root:staff /u: likewise, but also change its group to "staff"
         * chown -hR root /u: change the owner of /u and subfiles to "root"
+## 修改文件权限
+* chmod: chmod [-R] xyz {file or directory}
 12. 设置环境变量
     * export: 用于设置或者显示环境变量, 一般是临时的
     * export -p: 列出当前环境变量
@@ -47,3 +49,13 @@
 
 ## linux 和 windows 文件交互
 * rz: windows 到 linux, sz: linux 到windows
+
+## 缓存
+* echo 3 > /proc/sys/vm/drop_caches: 清除缓存中的数据
+
+## apt
+* lsb_release -c: 显示系统代号
+* /etc/apt/sources.list: apt 源的设置, 一般需要替换为阿里镜像源
+* apt update: 访问源列表里的每一个网址, 并读取软件列表, 然后保存在本地
+* apt upgrade: 将本地已安装软件与最近下载的软件列表里的软件对比, 更新
+* dpkg -i: 安装本地软件包
