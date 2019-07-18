@@ -34,17 +34,19 @@
 
 8. 关闭系统进程
     * killall -9 'python3': 关闭所有包含进程名python3的进程
+
 9. selenium
     * 双核 1 g: 最佳是跑5个selenium
 
 10. 创建文件夹
     * mkdir -p: no error if existing, make parent directories as needed
 
-11. 修改文件权限
-    * chown: Change the owner and/or group of each FILE to OWNER and/or GROUP
-        * chown root /u: change the owner of /u to "root"
-        * chown root:staff /u: likewise, but also change its group to "staff"
-        * chown -hR root /u: change the owner of /u and subfiles to "root"
+## 修改文件所属
+* chown: Change the owner and/or group of each FILE to OWNER and/or GROUP
+    * chown root /u: change the owner of /u to "root"
+    * chown root:staff /u: likewise, but also change its group to "staff"
+    * chown -hR root /u: change the owner of /u and subfiles to "root"
+
 ## 修改文件权限
 * chmod: chmod [-R] xyz {file or directory}
 
@@ -73,3 +75,6 @@
 * apt update: 访问源列表里的每一个网址, 并读取软件列表, 然后保存在本地
 * apt upgrade: 将本地已安装软件与最近下载的软件列表里的软件对比, 更新
 * dpkg -i: 安装本地软件包
+
+## 死机
+* ctrl + alt + prtsc + reisub: 安全的重启, 不会丢失数据
