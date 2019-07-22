@@ -199,3 +199,6 @@ conn = pool.connection()
     ```
 ## list
 - list.extend(index, object): insert object before index
+
+## os
+- os.uname(linux): return an object identifying the current operating system. The object behaves like a named tuple with the following fields: (sysname, nodename, release, version, matchine)

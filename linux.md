@@ -31,9 +31,15 @@
     * lsof -p pid | wc -l: 可以查看进程打开的文件数
         * lsof: 显示该进程打开文件
         * wc: 计算文件数
+    * lsof -u username: 列出某个用户打开的文件信息
+    * lsof -c mysql: 列出某个程序进程打开的文件信息
+    * lsof -i :3306: 列出谁在使用某个端口
 
-8. 关闭系统进程
-    * killall -9 'python3': 关闭所有包含进程名python3的进程
+## 关闭系统进程
+* killall -9 'python3': 关闭所有包含进程名python3的进程
+* kill 用于终止一个进程. 一般先用 ps -ef 查找某个进程, 得到它的进程号, 然后再使用 kill -9 进程号 终止该进程.
+    * 例: ps -ef | grep vim 然后 kill -9 pid
+
 9. selenium
     * 双核 1 g: 最佳是跑5个selenium
 
@@ -61,3 +67,16 @@
 
 ## linux 和 windows 文件交互
 * rz: windows 到 linux, sz: linux 到windows
+
+## grep
+* ls /dir | grep filename: 搜索 /dir 下包含 filename 的文件
+* grep match_pattern file_name 或 grep "match_pattern" file_name: 在文件中搜索一个单词, 命令会返回一个包含 "match_pattern" 的文本行
+* grep -c: 计算符合范本样式的行数
+* grep test *file: 在当前的目录中, 查找后缀有 file 字样的文件, 并且文件中包含 test 字符串的文件, 并打印出该字符串的行
+* grep -r update /etc/acpi: 以递归的方式查找符合条件的文件
+* grep -v: 反向查找, 不符合范本样式的文件
+
+## ps
+* ps: report a snapshot of the current processes
+* ps -e: Select all processes. Identical to -A.
+* ps -f: Do full-format listing.

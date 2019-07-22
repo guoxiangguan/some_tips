@@ -17,3 +17,21 @@
 ## where 语句
 * select * from table_name where id <> 5;
     * 在 mysql 中 <> 是 != 的意思
+
+## create 语句
+* create table table_name select * from table_name;: 复制表结构以及数据
+* create table table_name like table_nme;: 仅复制表结构
+
+## update 语句
+* UPDATE table_name SET field1=new-value1, field2=new-value2 [WHERE Clause];: 更新表字段
+
+## 事务
+* 用来做大范围修改的一个最佳的选择, 防止误操作造成不可挽回的错误
+```
+set autocommit=0; # 禁止自动提交
+begin; # 开始事务
+savepoint point0; # 建立事务保存点
+rollback to point0; # 回滚到 point0;
+rollback; # 回滚到初始状态
+commit; # 确认提交事务
+```
