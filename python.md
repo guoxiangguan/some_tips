@@ -15,9 +15,12 @@
 ## 多线程 concurrent.futures.ThreadPoolExecuter
 
     ```python
+    f_list = []
     with concurrent.futures.ThreadPoolExecuter(max_workers=nums) as executer:
         executer.map(func, list_of_args) # 有顺序的平均分配任务
-        [executer.submit(func, args) for args in args_list] # 一个线程的任务处理完立刻取下一个任务,是无序的,不平均的,一般而言这样是比较合理的
+        f_list = [executer.submit(func, args) for args in args_list] # 一个线程的任务处理完立刻取下一个任务,是无序的,不平均的,一般而言这样是比较合理的
+    wait(f_list)
+    print('done')
     ```
 
 ## 日志的配置
@@ -50,7 +53,7 @@ conn = pool.connection()
 * 常用配置:
     ```python
     pool = PooledDB(pymysql, mincached=10, maxcached=20, maxshared=10, maxconnections=200, blocking=True,
-            maxusage=100, host=HOST, user=USER, passwd=PASSWD, db='spider_test', port=PORT, charset=CHARSET)
+            maxusage=100, host=HOST, user=USER, passwd=PASSWD, db='spider_test', port=PORT, setsession=['SET AUTOCOMMIT = 1'], charset=CHARSET)
     ```
 * 优点:
     1. 在程序创建连接的时候, 可以从一个空闲的连接中获取, 不需要重新初始化连接, 提升获取连接的速度
@@ -162,6 +165,11 @@ conn = pool.connection()
 ## 字符串 str
 ### str.replace(a, b, count=-1)
 * 将 str 中的 a 全部替换为 b, 返回一个新的对象, 不会在 str 上进行修改.
+### 编码
+* 文本字符全部用 str 类型表示, str 可以表示 Unicode 字符集所有的字符
+* str --encode--> bytes; bytes --decode--> str;
+* encode 负责字符到字节的编码转换, 默认使用 UTF-8 编码转换
+* decode 负责字节到字符的编码转换, 默认使用 UTF-8 编码格式转换
 
 ## 日期时间 datetime
 * 获取当前时间: `datetime.datetime.now()`
@@ -199,3 +207,5 @@ conn = pool.connection()
 * bin(4): 将 4 从十进制转换为二进制字符串, 以 '0b' 开头
 * oct(4): 将 4 从十进制转换为八进制字符串, 以 '0o' 开头
 * hex(4): 将 4 从十进制转换为十六进制字符串, 以 '0x' 开头
+## os
+- os.uname(linux): return an object identifying the current operating system. The object behaves like a named tuple with the following fields: (sysname, nodename, release, version, matchine)

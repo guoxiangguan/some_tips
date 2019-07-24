@@ -1,4 +1,9 @@
 # conda notebook
+
+## 安装
+* 官网下载
+* bash Anconda*.sh: 用 bash 命令安装
+
 ## 环境
     创建一个新环境，其中包含指定版本的python
         conda create --name new_env python=3.7
@@ -26,3 +31,10 @@
 
     检查安装的程序是否在此环境中
         conda list
+
+## 配置镜像源
+```
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --set show_channel_urls yes
+```
