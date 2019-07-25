@@ -202,3 +202,9 @@ conn = pool.connection()
 
 ## os
 - os.uname(linux): return an object identifying the current operating system. The object behaves like a named tuple with the following fields: (sysname, nodename, release, version, matchine)
+
+## 压缩
+* python -m zipfile -c monty.zip spam.txt eggs.txt: 在命令行创建 zip 压缩文件, 将 spam.txt eggs.txt 压缩到 monty.zip 中
+* python -m zipfile -c monty.zip life-of-brain_1979/: 将文件夹 life-of-brain_1979/ 及其中包含的子文件和子文件夹压缩到 monty.zip 中
+* python -m zipfile -e monty.zip target-dir/: 将 monty.zip 解压到 target-dir/ 文件夹当中
+* python -m zipfile -l monty.zip: 查看 monty.zip 当中的文件列表
