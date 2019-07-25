@@ -200,6 +200,13 @@ conn = pool.connection()
 ## list
 - list.extend(index, object): insert object before index
 
+## int
+* int('100', 2): 将 '100' 从二进制转换为十进制
+* int('04', 8): 将 '04' 从八进制转换为十进制
+* int('0x4', 16): 将 '0x4' 从十六进制转换为十进制
+* bin(4): 将 4 从十进制转换为二进制字符串, 以 '0b' 开头
+* oct(4): 将 4 从十进制转换为八进制字符串, 以 '0o' 开头
+* hex(4): 将 4 从十进制转换为十六进制字符串, 以 '0x' 开头
 ## os
 - os.uname(linux): return an object identifying the current operating system. The object behaves like a named tuple with the following fields: (sysname, nodename, release, version, matchine)
 
