@@ -24,20 +24,28 @@
     ```
 
 ## 日志的配置
-    ```python
+```python
     # 日志配置
     logger = logging.getLogger('moudle_name')
     logger.setLevel(logging.INFO)
+    # 设置文件
     fh = logging.FileHandler('moudel_name.log')
     fh.setLevel(logging.DEBUG)
+    # 设置控制台输出
     sh = logging.StreamHandler()
     sh.setLevel(logging.DEBUG)
+    # 设置日志信息格式
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    # 设置按时间的滚动日志记录方式
+    # 这里设置的是一天一个日志文件, 最多保存七个日志文件
+    # 需要 import logging.handlers
+    # filename 同名不是就覆盖了吗?
+    log_file_handler = logging.handlers.TimedRotatingFileHandler(filename, when='d', interval=1, backupCount=7, encoding=None, delay=False, utc=False)
     fh.setFormatter(formatter)
     sh.setFormatter(formatter)
     logger.addHandler(fh)
     logger.addHandler(sh)
-    ```
+```
 
 ## 生成器
 * 用yield关键字或者括号包含表达式, 用next()获取其中的值, 或者用for循环来获取其中的值.
@@ -215,3 +223,30 @@ conn = pool.connection()
 * python -m zipfile -c monty.zip life-of-brain_1979/: 将文件夹 life-of-brain_1979/ 及其中包含的子文件和子文件夹压缩到 monty.zip 中
 * python -m zipfile -e monty.zip target-dir/: 将 monty.zip 解压到 target-dir/ 文件夹当中
 * python -m zipfile -l monty.zip: 查看 monty.zip 当中的文件列表
+
+## difflib
+* 此模块提供用于比较序列的类和函数
+### difflib.SequenceMatcher
+* 这是一个灵活的类, 可以用于比较任何类型的序列对, 只要序列对为 hashable 对象
+
+## platform
+* import platform; platform.system(): 返回计算机系统名, Windows or Linux
+
+## 排序
+### sort: 原地排序
+```python
+a=['delphi', 'Delphi', 'python', 'Python', 'golang', 'Golang', 'c++', 'C++', 'c', 'C']
+print(a)
+#按字典序升序排序
+a.sort() 
+print(a)
+#先按字符串长度升序排序，长度相同按字典序升序排序
+a.sort(key=lambda x:(len(x),x)) 
+print(a)
+#先按字符串长度升序排序，长度相同按字典序降序排序
+a.sort(key=lambda x:(len(x),list(map(lambda c:-ord(c),x)))) 
+print(a)
+#先按字符串长度降序排序，长度相同按字典序升序排序
+a.sort(key=lambda x:(-len(x),x))
+print(a)
+```

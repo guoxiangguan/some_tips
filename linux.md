@@ -2,7 +2,7 @@
 1. 实时查看日志文件更新
     * tail -f app.log
 
-2. 磁盘分区与自动挂载
+## 磁盘分区与自动挂载
     1. fdisk -l: 查看磁盘分区情况
     2. fidsk /dev/sda: 对磁盘进行分区
     3. mkfs -t ext4 /dev/sda4: 对分区格式化, 只有格式化之后才能进行挂载
@@ -106,3 +106,17 @@
 
 ## 死机
 * ctrl + alt + prtsc + reisub: 安全的重启, 不会丢失数据
+
+## du
+* du -h --max-depth=1: 查看文件夹大小, 递归深度为1
+* du -sh file: 等价于 du -h --max-depth=0, 只查看 file 的大小, 不看子目录或者子文件
+
+## tar
+* tar -cvf log.tar log2012.log: 仅打包, 不压缩(注: 需要 log.tar 存在)
+* tar -zcvf log.tar.gz log2012.log: 打包后, 以 gzip 压缩
+* tar -jcvf log.tar.bz2 log2012.log: 打包后, 以 bzip2 压缩
+* tar -ztvf log.tar.gz: 查阅 log.tar.gz 包内的文件
+* tar -zxvf log.tar.gz: 将 log.tar.gz 解压缩
+
+/etc
+* vim /etc/motd: 可以让使用者登录后获取一些讯息

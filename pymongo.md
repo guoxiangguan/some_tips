@@ -9,3 +9,10 @@
     proc = multiprocessing.Process(target=func)
     proc.start()
 ```
+
+## collection 操作
+### 重命名
+* `collection.rename('new_name')`: 集合的重命名
+### 正则查询
+* `collection.find({'key':{'$regex': "rep"}})`
+

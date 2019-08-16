@@ -31,6 +31,9 @@
 
     检查安装的程序是否在此环境中
         conda list
+    
+    升级包
+        conda update 包
 
 ## 配置镜像源
 ```
