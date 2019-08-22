@@ -2,7 +2,7 @@
 1. 实时查看日志文件更新
     * tail -f app.log
 
-2. 磁盘分区与自动挂载
+## 磁盘分区与自动挂载
     1. fdisk -l: 查看磁盘分区情况
     2. fidsk /dev/sda: 对磁盘进行分区
     3. mkfs -t ext4 /dev/sda4: 对分区格式化, 只有格式化之后才能进行挂载
@@ -31,9 +31,25 @@
     * lsof -p pid | wc -l: 可以查看进程打开的文件数
         * lsof: 显示该进程打开文件
         * wc: 计算文件数
+    * lsof -u username: 列出某个用户打开的文件信息
+    * lsof -c mysql: 列出某个程序进程打开的文件信息
+    * lsof -i :3306: 列出谁在使用某个端口
 
-8. 关闭系统进程
-    * killall -9 'python3': 关闭所有包含进程名python3的进程
+## 关闭系统进程
+* killall -9 'python3': 关闭所有包含进程名python3的进程
+* kill: 用来删除执行中的程序或者工作. kill 可将指定的信息送至程序, 预设的信息为 SIGTERM(15), 可将指定程序终止, 若无法终止该程序, 可使用 SIGKILL(9) 信息尝试强制删除程序.  (一般先用 ps -ef 查找某个进程, 得到它的进程号, 然后再使用 kill -9 进程号 强制终止该进程.)
+    * 语法: kill (选项) (参数)
+        * 选项: -l <信息编号>: 若不加<信息编号>选项, 则会列出全部的信息名称
+        * 参数: 进程或作业识别号, 指定要删除的进程或作业
+        * 常用的信号:
+            * HUP 1 终端断线
+            * INT 2 中断 (同 ctrl + c)
+            * QUIT 3 退出 (同 ctrl + \\)
+            * TERM 15 终止
+            * KILL 9 强制终止
+            * CONT 18 继续(与STOP相反, fg/bg命令)
+            * STOP 19 暂停(同 ctrl + z)
+    * 例: ps -ef | grep vim 然后 kill -9 pid
 
 9. selenium
     * 双核 1 g: 最佳是跑5个selenium
@@ -66,6 +82,18 @@
 ## linux 和 windows 文件交互
 * rz: windows 到 linux, sz: linux 到windows
 
+## grep
+* ls /dir | grep filename: 搜索 /dir 下包含 filename 的文件
+* grep match_pattern file_name 或 grep "match_pattern" file_name: 在文件中搜索一个单词, 命令会返回一个包含 "match_pattern" 的文本行
+* grep -c: 计算符合范本样式的行数
+* grep test *file: 在当前的目录中, 查找后缀有 file 字样的文件, 并且文件中包含 test 字符串的文件, 并打印出该字符串的行
+* grep -r update /etc/acpi: 以递归的方式查找符合条件的文件
+* grep -v: 反向查找, 不符合范本样式的文件
+
+## ps
+* ps: report a snapshot of the current processes
+* ps -e: Select all processes. Identical to -A.
+* ps -f: Do full-format listing.
 ## 缓存
 * echo 3 > /proc/sys/vm/drop_caches: 清除缓存中的数据
 
@@ -78,3 +106,17 @@
 
 ## 死机
 * ctrl + alt + prtsc + reisub: 安全的重启, 不会丢失数据
+
+## du
+* du -h --max-depth=1: 查看文件夹大小, 递归深度为1
+* du -sh file: 等价于 du -h --max-depth=0, 只查看 file 的大小, 不看子目录或者子文件
+
+## tar
+* tar -cvf log.tar log2012.log: 仅打包, 不压缩(注: 需要 log.tar 存在)
+* tar -zcvf log.tar.gz log2012.log: 打包后, 以 gzip 压缩
+* tar -jcvf log.tar.bz2 log2012.log: 打包后, 以 bzip2 压缩
+* tar -ztvf log.tar.gz: 查阅 log.tar.gz 包内的文件
+* tar -zxvf log.tar.gz: 将 log.tar.gz 解压缩
+
+/etc
+* vim /etc/motd: 可以让使用者登录后获取一些讯息
