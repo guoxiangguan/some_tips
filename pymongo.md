@@ -16,3 +16,7 @@
 ### 正则查询
 * `collection.find({'key':{'$regex': "rep"}})`
 
+## document 操作
+### 更新
+* `$set` 用于指定一个字段的值, 如果没有就添加
+    * `db.users.update({"name": "joe"}, {"$set": {"favorite book": "War and Peace"}})`
