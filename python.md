@@ -250,3 +250,7 @@ print(a)
 a.sort(key=lambda x:(-len(x),x))
 print(a)
 ```
+
+## __name__
+- __name__ 是python的系统内建变量, 可以通过 `dir(__builtin__)` 来查看.
+- __name__ 在程序里直接运行的话值是 '__main__', 但是当作一个模块引入的时候, __name__ 的值为导入的模块名.
