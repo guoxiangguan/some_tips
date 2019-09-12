@@ -81,7 +81,7 @@
 
 ## linux 和 windows 文件交互
 * rz: windows 到 linux, sz: linux 到windows
-
+* apt install lrzsz
 ## grep
 * ls /dir | grep filename: 搜索 /dir 下包含 filename 的文件
 * grep match_pattern file_name 或 grep "match_pattern" file_name: 在文件中搜索一个单词, 命令会返回一个包含 "match_pattern" 的文本行
@@ -120,3 +120,23 @@
 
 /etc
 * vim /etc/motd: 可以让使用者登录后获取一些讯息
+
+## zip & unzip
+* zip 命令可以将常用的文件压缩成常用的 zip 格式, unzip 命令则用来解压缩 zip 文件.
+1. 我想把一个文件abc.txt和一个目录dir1压缩成为yasuo.zip:
+    * `zip -r yasuo.zip abc.txt dir1`
+2. 我下载了一个yasuo.zip文件，想解压缩：
+    * `unzip yasuo.zip`
+    - -d<目录> 指定文件解压缩后所要存储的目录
+3. 我当前目录下有abc1.zip，abc2.zip和abc3.zip，我想一起解压缩它们：
+    - `unzip abc\?.zip`
+4. 我有一个很大的压缩文件large.zip，我不想解压缩，只想看看它里面有什么：
+    - `unzip -v large.zip`
+5. 我下载了一个压缩文件large.zip，想验证一下这个压缩文件是否下载完全了:
+    -  `unzip -t large.zip`
+6. 我用-v选项发现music.zip压缩文件里面有很多目录和子目录，并且子目录中其实都是歌曲mp3文件，我想把这些文件都下载到第一级目录，而不是一层一层建目录：
+    - `unzip -j music.zip` 
+
+
+## ssh
+- 开启 ssh: service sshd restart/start
