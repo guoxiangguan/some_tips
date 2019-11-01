@@ -111,6 +111,10 @@
 * du -h --max-depth=1: 查看文件夹大小, 递归深度为1
 * du -sh file: 等价于 du -h --max-depth=0, 只查看 file 的大小, 不看子目录或者子文件
 
+## df
+- 用来检查 linux 服务器的文件系统的磁盘占用情况. 可以利用该命令来获取磁盘被占用了多少空间, 目前还剩下多少空间等信息.
+- df -h 方便阅读方式显示.
+
 ## tar
 * tar -cvf log.tar log2012.log: 仅打包, 不压缩(注: 需要 log.tar 存在)
 * tar -zcvf log.tar.gz log2012.log: 打包后, 以 gzip 压缩
