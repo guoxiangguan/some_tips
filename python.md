@@ -264,3 +264,11 @@ print(a)
 
 ## divmod
 - divmode() 函数接收两个数字类型(非复数)参数, 返回一个包含商和余数的元组(a//b, a%b).
+
+## typing 包
+- 很实用的一个包, 标记语法, 用于标记函数的参数类型, 以及返回类型
+    ```python
+    from typing import List
+    def function(a: int, b: int) -> List[int]:
+        return ans
+    ```
