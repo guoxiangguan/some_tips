@@ -24,6 +24,8 @@
 
 ## update 语句
 * UPDATE table_name SET field1=new-value1, field2=new-value2 [WHERE Clause];: 更新表字段
+### 批量更新例子:
+- update table1 as a, table2 as b, set a.url = b.url where a.line_id = b.line_id;
 
 ## 事务
 * 用来做大范围修改的一个最佳的选择, 防止误操作造成不可挽回的错误
