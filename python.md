@@ -272,3 +272,9 @@ print(a)
     def function(a: int, b: int) -> List[int]:
         return ans
     ```
+## timeit 包
+- 用途: 测试代码片段的消耗时间
+```python
+import timeit
+spending_time = timeit.timeit(stmt = func, number = 10000)
+```
