@@ -25,6 +25,7 @@
 
 6. 后台运行
     * nohup python3 *.py >out.log 2>&1 &: 即使关闭终端, 程序依然可以在服务器上运行, 并将日志记录在out.log
+    * nohup python3 *.py >/dev/null 2>&1 &: 将日志记录丢弃
 
 7. 查看系统进程
     * htop: 友好的系统进程查看命令
