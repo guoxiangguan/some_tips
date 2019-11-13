@@ -38,3 +38,6 @@ rollback to point0; # 回滚到 point0;
 rollback; # 回滚到初始状态
 commit; # 确认提交事务
 ```
+## 在 innodb 结构下统计表的行数
+- select table_rows from information_schema.tables where table_schema = 'bidding_data' and table_name = 'bidding_info';(好像只是一个大致的数据, 并不准确)
+- select count(*) from table; (比较准确, 但是在数据量很大时会运行的相当耗时, 不推荐)
