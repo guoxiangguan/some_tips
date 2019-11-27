@@ -87,6 +87,7 @@
 * ls /dir | grep filename: 搜索 /dir 下包含 filename 的文件
 * grep match_pattern file_name 或 grep "match_pattern" file_name: 在文件中搜索一个单词, 命令会返回一个包含 "match_pattern" 的文本行
 * grep -c: 计算符合范本样式的行数
+   - grep -c '入库' tmp.log: 计算文件 'tmp.log' 包含 '入库' 字符的行数.
 * grep test *file: 在当前的目录中, 查找后缀有 file 字样的文件, 并且文件中包含 test 字符串的文件, 并打印出该字符串的行
 * grep -r update /etc/acpi: 以递归的方式查找符合条件的文件
 * grep -v: 反向查找, 不符合范本样式的文件
