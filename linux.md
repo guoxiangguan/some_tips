@@ -1,5 +1,5 @@
 # linux notebook
-1. 实时查看日志文件更新
+## 实时查看日志文件更新
     * tail -f app.log
 
 ## 磁盘分区与自动挂载
@@ -13,21 +13,31 @@
     6. fdisk默认为mbr文件系统分区限制为2TB, 可以用parted对gpt文件系统分区
     7. mbr文件系统默认主分区加上扩展分区不超过4, 扩展分区不超过1, 扩展分区包含逻辑分区, 逻辑分区的个数没有限制
 
-3. 复制
+## linux 添加新硬盘, fdisk -l 没有扫描出来的问题
+   1. 查看主机总线号, 命令: ls /sys/class/scsi_host/
+   2. 重新扫描SCSI总线，以添加新设备:
+      ```
+      echo "- - -">/sys/class/scsi_host/host0/scan 
+      echo "- - -">/sys/class/scsi_host/host1/scan 
+      echo "- - -">/sys/class/scsi_host/host2/scan 
+      ```
+   3. 再执行fdisk -l，就可以看到新加的硬盘
+
+## 复制
     * cp -a: 复制常用的命令相当于cp -pdr, 即连同文件的属性一起复制, 若来源为连结档的属性则复制连结档的属性而非本身, 递归的持续复制
 
-4. 打开mongo服务:
+## 打开mongo服务:
     * cd /usr/local/mongodb/bin/
     * ./mongod --smallfiles
 
-5. 清屏命令:
+## 清屏命令:
     * printf "\033c"
 
-6. 后台运行
+## 后台运行
     * nohup python3 *.py >out.log 2>&1 &: 即使关闭终端, 程序依然可以在服务器上运行, 并将日志记录在out.log
     * nohup python3 *.py >/dev/null 2>&1 &: 将日志记录丢弃
 
-7. 查看系统进程
+## 查看系统进程
     * htop: 友好的系统进程查看命令
     * lsof -p pid | wc -l: 可以查看进程打开的文件数
         * lsof: 显示该进程打开文件
@@ -52,10 +62,10 @@
             * STOP 19 暂停(同 ctrl + z)
     * 例: ps -ef | grep vim 然后 kill -9 pid
 
-9. selenium
+## selenium
     * 双核 1 g: 最佳是跑5个selenium
 
-10. 创建文件夹
+## 创建文件夹
     * mkdir -p: no error if existing, make parent directories as needed
 
 ## 修改文件所属
@@ -67,7 +77,7 @@
 ## 修改文件权限
 * chmod: chmod [-R] xyz {file or directory}
 
-12. 设置环境变量
+## 设置环境变量
     * export: 用于 **临时** 设置或者显示环境变量
         * export LANG=en_US.UTF-8: 保证输出不会在 linux 终端上显示乱码
         * export -p: 列出当前环境变量
