@@ -12,3 +12,7 @@
 3. git pull: 相当于是从远程获取最新版本并 merge 到本地  
     > git pull origin master  
 4. 在实际使用中 git fetch 更加安全一点
+
+## 创建 ssh key
+- `ssh-keygen -t rsa -C "1587753354@qq.com"`
+- 然后从用户目录下的 .ssh 文件下， 将 rsa.pub 里面的内容粘贴到 git_hub 的 ssh-key 下.

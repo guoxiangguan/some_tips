@@ -286,3 +286,16 @@ x_insort_rigth = bisect.insort_right(L,x) #将x插入到列表L中，x存在时�
  
 print L
 ```
+## typing 包
+- 很实用的一个包, 标记语法, 用于标记函数的参数类型, 以及返回类型
+    ```python
+    from typing import List
+    def function(a: int, b: int) -> List[int]:
+        return ans
+    ```
+## timeit 包
+- 用途: 测试代码片段的消耗时间
+```python
+import timeit
+spending_time = timeit.timeit(stmt = func, number = 10000)
+```
