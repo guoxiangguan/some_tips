@@ -299,3 +299,12 @@ print L
 import timeit
 spending_time = timeit.timeit(stmt = func, number = 10000)
 ```
+
+## 正则 re
+- 将文本中的非中文字符全部删除: `res = re.sub(r'[^\u4e00-\u9fa5]', '', text)`
+
+## string 模块
+- `from string import ascii_lowercase # 从 string 标准库中导入小写字母组成的字符串`
+- string.ascii_letters: ascii_lowercase 和 ascii_uppercase 常量的连接, 该值不依赖语言区域.
+- string.digits: 字符串 '0123456789'.
+- string.punctuation: 由在 C 语言区域中被视为标点符号的 ASCII 字符组成的字符串.
