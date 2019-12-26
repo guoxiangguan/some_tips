@@ -44,6 +44,20 @@
 * set cursorline: 设置高亮行
 * highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE: 设置高亮行的颜色配置
 * highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE: 设置高亮列的颜色配置
+```
+# 个人配置
+set nu                                                                                                                                   
+set ruler
+set showcmd
+set incsearch
+set autoindent
+filetype plugin indent on
+set cursorcolumn "设置高亮列"
+set cursorline "设置高亮行"
+"美化vim配色"
+highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
+highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
+```
 
 ## 对比差异修改
 * vimdiff file1,file2 [file3 \[file4\]]: 进入比较模式, 使用垂直分割, 若要水平分割, 则加上 -o 参数
