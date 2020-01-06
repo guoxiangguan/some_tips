@@ -25,6 +25,8 @@
 
 ## 日志的配置
 ```python
+    import logging
+    from logging import handlers
     # 日志配置
     logger = logging.getLogger('moudle_name')
     logger.setLevel(logging.INFO)
